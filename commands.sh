@@ -6,3 +6,5 @@ docker run python-docker-dev:latest
 docker build --tag python-docker-dev . --rm
 # prune images
 docker image prune -a
+# build with key
+docker build --build-arg SSH_PRIVATE_KEY="$(cat ks2_deploy)" -t python-test .
