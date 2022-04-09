@@ -8,3 +8,5 @@ docker build --tag python-docker-dev . --rm
 docker image prune -a
 # build with key
 docker build --build-arg SSH_PRIVATE_KEY="$(cat ks2_deploy)" -t python-test .
+# build with compose and key
+docker-compose build --build-arg SSH_PRIVATE_KEY="$(cat ks2_deploy)"
