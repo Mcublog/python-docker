@@ -7,25 +7,13 @@ services:
    context: .
   ports:
   - 8000:5000
-  volumes:
-  - ./:/app
-  - ./storage:/app/data
   depends_on:
   - redis
-
  redis:
   image: "redis:alpine"
-
-#  mysqldb:
-#   image: mysql
-#   ports:
-#   - 3306:3306
-#   environment:
-#   - MYSQL_ROOT_PASSWORD=p@ssw0rd1
-#   volumes:
-#   - mysql:/var/lib/mysql
-#   - mysql_config:/etc/mysql
-
-# volumes:
-#   mysql:
-#   mysql_config:
+  command:
+    - redis-server
+    - /home/redis/redis.conf
+  volumes:
+    - ./redis/redis.conf:/home/redis/redis.conf
+    - ./redis/appendonly.aof:/data/appendonly.aof

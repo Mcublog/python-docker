@@ -3,11 +3,12 @@ import time
 from datetime import datetime
 
 import mysql.connector
-import redis
 from flask import Flask
 
+import redis
+
 app = Flask(__name__)
-cache = redis.Redis(host='redis', port=6379)
+cache = redis.Redis(host='redis', port=6380, password='test')
 
 
 def get_hit_count():
